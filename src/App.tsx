@@ -50,6 +50,7 @@ function App() {
             <List />
             <List />
             <List />
+
             <input type="text" value={searchInput} onChange={handleSearch} />
 
             <ul>
