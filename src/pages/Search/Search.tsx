@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./search.scss";
+import ListItem from "../../components/listItem/ListItem";
+import { MoviesCtx } from "../../context/MoviesContext";
 
 const Search = () => {
     const [searchInput, setSearchInput] = useState<string>("");
@@ -7,6 +9,9 @@ const Search = () => {
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value);
     };
+
+    const movies = useContext(MoviesCtx);
+
     return (
         <div className="search">
             <input
@@ -15,29 +20,16 @@ const Search = () => {
                 onChange={handleSearch}
                 className="search__input"
             />
-            {/* <ul>
+
+            <div className="search__result">
                 {movies &&
                     searchInput.length > 0 &&
                     movies
                         .filter((movie) =>
                             movie.title.toLowerCase().includes(searchInput)
                         )
-                        .map((movie) => (
-                            <li key={movie.id}>
-                                <h1>Title: {movie.title}</h1>
-                                <img
-                                    src={tryRequire(movie.id)}
-                                    alt="hero image"
-                                />
-                                <div>
-                                    Genres:{" "}
-                                    {movie.genres.map((genre) => (
-                                        <p key={genre}>{genre}</p>
-                                    ))}
-                                </div>
-                            </li>
-                        ))}
-            </ul> */}
+                        .map((movie) => <ListItem movie={movie} />)}
+            </div>
         </div>
     );
 };
