@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
     const [movies, setMovies] = useState<Movie[] | null>(null);
@@ -39,6 +40,7 @@ function App() {
 
     return (
         <div className="App">
+            <Navbar />
             <input type="text" value={searchInput} onChange={handleSearch} />
 
             <ul>

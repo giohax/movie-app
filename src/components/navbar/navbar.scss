@@ -1,0 +1,44 @@
+.navbar {
+    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    color: white;
+
+    &__container {
+        display: flex;
+        padding: 0px 50px;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+
+        &__left {
+            display: flex;
+            align-items: center;
+
+            h1 {
+                margin-right: 40px;
+                color: #ffff00;
+                cursor: pointer;
+            }
+
+            span {
+                margin-right: 20px;
+                cursor: pointer;
+            }
+        }
+
+        &__right {
+            display: flex;
+            align-items: center;
+
+            svg {
+                height: 20px;
+                width: 20px;
+                cursor: pointer;
+                margin-left: 20px;
+            }
+        }
+    }
+}
