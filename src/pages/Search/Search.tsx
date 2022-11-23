@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./search.scss";
 
 const Search = () => {
     const [searchInput, setSearchInput] = useState<string>("");
@@ -6,11 +7,15 @@ const Search = () => {
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value);
     };
-    return <div>Search</div>;
-};
-{
-    /* <input type="text" value={searchInput} onChange={handleSearch} />
-            <ul>
+    return (
+        <div className="search">
+            <input
+                type="text"
+                value={searchInput}
+                onChange={handleSearch}
+                className="search__input"
+            />
+            {/* <ul>
                 {movies &&
                     searchInput.length > 0 &&
                     movies
@@ -32,6 +37,9 @@ const Search = () => {
                                 </div>
                             </li>
                         ))}
-            </ul> */
-}
+            </ul> */}
+        </div>
+    );
+};
+
 export default Search;
