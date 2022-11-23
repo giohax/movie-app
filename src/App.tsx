@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Featured from "./components/featured/Featured";
+import List from "./components/list/List";
 import Navbar from "./components/navbar/Navbar";
 
 function App() {
@@ -43,6 +44,12 @@ function App() {
         <div className="App">
             <Navbar />
             <Featured />
+            <List />
+            <List />
+            <List />
+            <List />
+            <List />
+            <List />
             <input type="text" value={searchInput} onChange={handleSearch} />
 
             <ul>
