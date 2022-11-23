@@ -20,7 +20,7 @@ const List = () => {
                     />
                 </svg>
 
-                <div className="list__wrapper__container">
+                <div className="list__container">
                     <ListItem />
                     <ListItem />
                     <ListItem />
