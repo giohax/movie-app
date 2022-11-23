@@ -5,6 +5,7 @@
     top: 0;
     z-index: 999;
     color: white;
+    font-weight: bold;
 
     &__container {
         display: flex;
@@ -13,32 +14,43 @@
         justify-content: space-between;
         height: 70px;
 
-        &__left {
-            display: flex;
-            align-items: center;
+        svg {
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+        }
+    }
 
-            h1 {
-                margin-right: 40px;
-                color: #ffff00;
-                cursor: pointer;
-            }
+    &__left {
+        display: flex;
+        align-items: center;
 
-            span {
-                margin-right: 20px;
-                cursor: pointer;
-            }
+        h1 {
+            margin-right: 40px;
+            color: #ffff00;
+            cursor: pointer;
+        }
+        span {
+            margin-right: 30px;
         }
 
-        &__right {
+        .link {
             display: flex;
             align-items: center;
+            gap: 10px;
+            color: white;
+        }
+    }
 
-            svg {
-                height: 20px;
-                width: 20px;
-                cursor: pointer;
-                margin-left: 20px;
-            }
+    &__right {
+        display: flex;
+        align-items: center;
+
+        svg {
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+            margin-left: 20px;
         }
     }
 }
