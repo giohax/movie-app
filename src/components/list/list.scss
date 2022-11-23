@@ -23,6 +23,8 @@
             bottom: 0;
             margin: auto;
             cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s;
 
             &:first-of-type {
                 left: 0;
@@ -30,6 +32,10 @@
 
             &:nth-of-type(2) {
                 right: 0;
+            }
+
+            &:hover {
+                opacity: 1;
             }
         }
     }
