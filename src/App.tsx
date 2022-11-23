@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [movies, setMovies] = useState<Movie[] | null>(null);
+
+    const URL = "https://code-challenge.spectrumtoolbox.com/api/movies";
+
+    type Movie = {
+        id: string;
+        title: string;
+        genres: string[];
+    };
+
+    useEffect(() => {
+        fetch(URL, {
+            method: "GET",
+            headers: {
+                Authorization: "Api-Key q3MNxtfep8Gt",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => setMovies(data.data));
+    }, []);
+
+    return (
+        <div className="App">
+            <ul>
+                {movies?.map((movie) => (
+                    <li key={movie.id}>{movie.title}</li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default App;
