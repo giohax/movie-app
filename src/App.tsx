@@ -27,18 +27,13 @@ function App() {
             .then((data) => setMovies(data.data));
     }, []);
 
-    console.log(
-        movies?.filter((movie) =>
-            movie.title.toLowerCase().includes(searchInput)
-        )
-    );
-
     return (
         <div className="App">
             <input type="text" value={searchInput} onChange={handleSearch} />
 
             <ul>
                 {movies &&
+                    searchInput.length > 0 &&
                     movies
                         .filter((movie) =>
                             movie.title.toLowerCase().includes(searchInput)
