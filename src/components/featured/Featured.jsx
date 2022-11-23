@@ -7,14 +7,14 @@ const Featured = () => {
         <div className="featured">
             <img src={featuredImage} />
             <div className="featured__info">
-                <span className="featured__info__desc">
+                <span className="featured__desc">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Perspiciatis molestias possimus impedit alias quam ex
                     aliquid fugiat nam delectus, quia eos doloremque molestiae
                     animi adipisci sint? Itaque similique iste vel.
                 </span>
-                <div className="featured__info__buttons">
-                    <button className="featured__info__buttons__play">
+                <div className="featured__actions">
+                    <button className="btn btn--play">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
@@ -25,7 +25,7 @@ const Featured = () => {
                         </svg>
                         Play
                     </button>
-                    <button className="featured__info__buttons__more">
+                    <button className="btn btn--info">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"

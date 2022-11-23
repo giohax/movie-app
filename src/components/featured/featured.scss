@@ -16,35 +16,35 @@
         color: white;
         display: flex;
         flex-direction: column;
+    }
 
-        &__desc {
-            margin: 20px 0px;
-        }
+    &__desc {
+        margin: 20px 0px;
+    }
 
-        &__buttons {
+    &__actions {
+        display: flex;
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             display: flex;
-            button {
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                display: flex;
-                align-items: center;
-                font-size: 18px;
-                font-weight: 500;
-                margin-right: 10px;
-                cursor: pointer;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 500;
+            margin-right: 10px;
+            cursor: pointer;
 
-                svg {
-                    height: 25px;
-                    width: 25px;
-                }
+            svg {
+                height: 25px;
+                width: 25px;
             }
 
-            &__play {
+            &--play {
                 background-color: white;
             }
 
-            &__more {
+            &--info {
                 background-color: gray;
                 color: white;
             }
