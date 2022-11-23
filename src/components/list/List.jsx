@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
 
 const List = () => {
+    const [isMoved, setIsMoved] = useState(false);
+    const [slideNumber, setSlideNumber] = useState(0);
+
+    const listRef = useRef();
+
+    const handleClick = (direction) => {
+        setIsMoved(true);
+        let distance = listRef.current.getBoundingClientRect().x - 50;
+        if (direction === "left" && slideNumber > 0) {
+            setSlideNumber(slideNumber - 1);
+            listRef.current.style.transform = `translateX(${
+                1275 + distance
+            }px)`;
+        }
+        if (direction === "right" && slideNumber < 5) {
+            setSlideNumber(slideNumber + 1);
+            listRef.current.style.transform = `translateX(${
+                -1275 + distance
+            }px)`;
+        }
+    };
+
     return (
         <div className="list">
             <span className="list__title">Continue to watch</span>
@@ -12,6 +34,7 @@ const List = () => {
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     className="w-5 h-5"
+                    onClick={() => handleClick("left")}
                 >
                     <path
                         fillRule="evenodd"
@@ -20,7 +43,7 @@ const List = () => {
                     />
                 </svg>
 
-                <div className="list__container">
+                <div className="list__container" ref={listRef}>
                     <ListItem />
                     <ListItem />
                     <ListItem />
@@ -38,6 +61,7 @@ const List = () => {
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     className="w-5 h-5"
+                    onClick={() => handleClick("right")}
                 >
                     <path
                         fillRule="evenodd"
