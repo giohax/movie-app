@@ -1,33 +1,41 @@
 import React, { useState, useRef } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
+import { Movie } from "../../context/MoviesContext";
 
-const List = () => {
+type ListProps = {
+    title: string;
+    movies: Movie[] | undefined;
+};
+
+const List = ({ title, movies }: ListProps) => {
     const [isMoved, setIsMoved] = useState(false);
     const [slideNumber, setSlideNumber] = useState(0);
 
-    const listRef = useRef();
+    const listRef = useRef<HTMLDivElement>(null);
 
-    const handleClick = (direction) => {
+    const handleClick = (direction: "left" | "right") => {
         setIsMoved(true);
-        let distance = listRef.current.getBoundingClientRect().x - 50;
-        if (direction === "left" && slideNumber > 0) {
-            setSlideNumber(slideNumber - 1);
-            listRef.current.style.transform = `translateX(${
-                1275 + distance
-            }px)`;
-        }
-        if (direction === "right" && slideNumber < 5) {
-            setSlideNumber(slideNumber + 1);
-            listRef.current.style.transform = `translateX(${
-                -1275 + distance
-            }px)`;
+        if (listRef.current) {
+            let distance = listRef.current.getBoundingClientRect().x - 50;
+            if (direction === "left" && slideNumber > 0) {
+                setSlideNumber(slideNumber - 1);
+                listRef.current.style.transform = `translateX(${
+                    1275 + distance
+                }px)`;
+            }
+            if (direction === "right" && slideNumber < 5) {
+                setSlideNumber(slideNumber + 1);
+                listRef.current.style.transform = `translateX(${
+                    -1275 + distance
+                }px)`;
+            }
         }
     };
 
     return (
         <div className="list">
-            <span className="list__title">Continue to watch</span>
+            <span className="list__title">{title}</span>
             <div className="list__wrapper">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -44,16 +52,9 @@ const List = () => {
                 </svg>
 
                 <div className="list__container" ref={listRef}>
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
+                    {movies?.map((movie) => (
+                        <ListItem key={movie.id} movie={movie} />
+                    ))}
                 </div>
 
                 <svg
