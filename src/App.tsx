@@ -27,6 +27,16 @@ function App() {
             .then((data) => setMovies(data.data));
     }, []);
 
+    console.log(movies);
+
+    const tryRequire = (id: string) => {
+        try {
+            return require(`./images/hero/${id}.jpeg`);
+        } catch {
+            return require(`./images/hero/defaultImage.jpeg`);
+        }
+    };
+
     return (
         <div className="App">
             <input type="text" value={searchInput} onChange={handleSearch} />
@@ -41,6 +51,10 @@ function App() {
                         .map((movie) => (
                             <li key={movie.id}>
                                 <h1>Title: {movie.title}</h1>
+                                <img
+                                    src={tryRequire(movie.id)}
+                                    alt="hero image"
+                                />
                                 <div>
                                     Genres:{" "}
                                     {movie.genres.map((genre) => (
