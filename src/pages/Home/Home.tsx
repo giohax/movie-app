@@ -3,6 +3,7 @@ import { MoviesCtx } from "../../context/MoviesContext";
 import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
 import ListItemDetail from "../../components/listItemDetail/ListItemDetail";
+import "./home.scss";
 
 const Home = () => {
     const moviesObj = useContext(MoviesCtx);
@@ -12,7 +13,7 @@ const Home = () => {
     };
 
     return (
-        <>
+        <div className="home">
             <Featured />
             {/* Recommended for you */}
             <List title="Recommended for you" movies={shuffleMovies()} />
@@ -31,7 +32,7 @@ const Home = () => {
 
             {/* Watch Again */}
             <List title="Watch Again" movies={shuffleMovies()} />
-        </>
+        </div>
     );
 };
 
