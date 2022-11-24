@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./navbar.scss";
 
 const Navbar = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    window.onscroll = () => {
+        setIsScrolled(window.pageYOffset === 0 ? false : true);
+        return () => (window.onscroll = null);
+    };
+
     return (
         <>
-            <header className="navbar">
+            <header
+                className={isScrolled ? "navbar navbar--scrolled" : "navbar"}
+            >
                 <div className="navbar__container">
                     <div className="navbar__left">
                         <h1>MOVIEFLIX</h1>
