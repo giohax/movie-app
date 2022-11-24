@@ -1,6 +1,6 @@
 .listItem {
-    width: 400px;
-    height: 225px;
+    width: 350px;
+    height: 196px;
     overflow: hidden;
     cursor: pointer;
     color: white;
@@ -17,10 +17,5 @@
 
     &:hover {
         transform: scale(1.1);
-    }
-
-    @media (min-width: 640px) {
-        width: 350px;
-        height: 196.88px;
     }
 }

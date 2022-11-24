@@ -36,6 +36,7 @@ const ListItemDetail = () => {
     return (
         <div className="listItemDetail">
             <img src={heroImage} />
+            <div className="listItemDetail__overlay"></div>
             <div className="listItemDetail__info">
                 <div className="listItemDetail__title">
                     <span>{title ? title : "Untitled"}</span>
