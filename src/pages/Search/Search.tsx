@@ -7,7 +7,6 @@ import { Outlet } from "react-router-dom";
 const Search = () => {
     const [searchInput, setSearchInput] = useState<string>("");
     const genreKey = useRef<string>("");
-    const titleKey = useRef<string>("");
 
     const moviesObj = useContext(MoviesCtx);
 
@@ -52,7 +51,7 @@ const Search = () => {
     const noResults = () => {
         return (
             <div className="search__result--none">
-                <span>No results were found.</span>
+                <span>{`No results were found for "${searchInput}"`}</span>
             </div>
         );
     };
