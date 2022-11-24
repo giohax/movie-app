@@ -28,6 +28,13 @@
         justify-items: center;
         gap: 25px;
 
+        &--none {
+            width: 100%;
+            color: white;
+            font-size: 44px;
+            grid-column: 1/-1;
+        }
+
         @media (min-width: 640px) {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }

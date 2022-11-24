@@ -49,6 +49,14 @@ const Search = () => {
         }
     };
 
+    const noResults = () => {
+        return (
+            <div className="search__result--none">
+                <span>No results were found.</span>
+            </div>
+        );
+    };
+
     return (
         <div className="search">
             <input
@@ -63,6 +71,9 @@ const Search = () => {
                 {moviesObj &&
                     searchInput.length > 0 &&
                     getMoviesByTitleOrGenre()}
+                {moviesObj && getMoviesByTitleOrGenre()?.length === 0
+                    ? noResults()
+                    : null}
             </div>
         </div>
     );
