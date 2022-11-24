@@ -4,10 +4,10 @@ import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
 
 const Home = () => {
-    const movies = useContext(MoviesCtx);
+    const moviesObj = useContext(MoviesCtx);
 
     const shuffleMovies = () => {
-        return movies?.sort(() => 0.5 - Math.random()).slice(0, 10);
+        return moviesObj?.movies?.sort(() => 0.5 - Math.random()).slice(0, 10);
     };
 
     return (
