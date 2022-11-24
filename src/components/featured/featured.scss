@@ -1,5 +1,6 @@
 .featured {
     height: 90vh;
+    font-size: 16px;
     position: relative;
 
     img {
@@ -8,36 +9,54 @@
         object-fit: cover;
     }
 
-    &__info {
-        width: 35%;
+    &__overlay {
         position: absolute;
-        left: 50px;
-        bottom: 100px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, transparent 0%, black 100%);
+    }
+
+    &__info {
+        position: absolute;
+        bottom: 10%;
         color: white;
         display: flex;
         flex-direction: column;
+        padding: 25px;
     }
 
     &__desc {
         margin: 20px 0px;
+        line-height: 1.6;
+    }
+
+    &__title {
+        font-size: 50px;
+        font-weight: bold;
+        color: #feff00;
+        text-transform: uppercase;
+        margin-bottom: 25px;
     }
 
     &__actions {
         display: flex;
         .btn {
-            padding: 10px 20px;
+            padding: 15px 30px;
             border: none;
             border-radius: 5px;
             display: flex;
             align-items: center;
             font-size: 18px;
-            font-weight: 500;
+            font-weight: bold;
             margin-right: 10px;
             cursor: pointer;
 
             svg {
                 height: 25px;
                 width: 25px;
+                margin-right: 10px;
             }
 
             &--play {
@@ -48,6 +67,22 @@
                 background-color: gray;
                 color: white;
             }
+        }
+    }
+}
+
+@media (min-width: 640px) {
+    .featured {
+        font-size: 20px;
+
+        &__title {
+            font-size: 75px;
+        }
+        &__info {
+            top: auto;
+            bottom: 10%;
+            left: 50px;
+            width: 50%;
         }
     }
 }
