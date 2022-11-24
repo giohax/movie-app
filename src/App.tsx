@@ -11,10 +11,7 @@ function App() {
                 <Route path="/" element={<Navbar />}>
                     <Route index element={<Home />} />
                     <Route path="search" element={<Search />} />
-                    <Route
-                        path="search/:movieId"
-                        element={<ListItemDetail />}
-                    />
+                    <Route path="search/:id" element={<ListItemDetail />} />
                 </Route>
             </Routes>
         </>

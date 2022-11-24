@@ -1,6 +1,7 @@
 import "./listItem.scss";
 import React from "react";
 import { Movie } from "../../context/MoviesContext";
+import { Link } from "react-router-dom";
 
 type ListItemProps = {
     movie: Movie;
@@ -16,9 +17,11 @@ const ListItem = ({ movie }: ListItemProps) => {
     }
 
     return (
-        <div className="listItem">
-            <img src={heroImage} />
-        </div>
+        <Link to={`/search/${movie.id}`}>
+            <div className="listItem">
+                <img src={heroImage} />
+            </div>
+        </Link>
     );
 };
 

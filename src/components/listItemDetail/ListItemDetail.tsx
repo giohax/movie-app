@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import "./listItemDetail.scss";
-import featuredImage from "../../images/hero/SP015622350000.jpeg";
+import { MoviesCtx } from "../../context/MoviesContext";
+import { useParams } from "react-router-dom";
 
 const ListItemDetail = () => {
+    const moviesObj = useContext(MoviesCtx);
+    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState("");
+    const { id } = useParams();
+    const URL = `https://code-challenge.spectrumtoolbox.com/api/movies/${id}`;
+
+    useEffect(() => {
+        fetch(URL, {
+            method: "GET",
+            headers: {
+                Authorization: "Api-Key q3MNxtfep8Gt",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setDescription(data.data.description);
+                setTitle(data.data.title);
+            });
+    }, []);
+
+    let heroImage: string;
+
+    try {
+        heroImage = require(`../../images/hero/${id}.jpeg`);
+    } catch {
+        heroImage = require(`../../images/hero/defaultImage.jpeg`);
+    }
+
     return (
         <div className="listItemDetail">
-            <img src={featuredImage} />
+            <img src={heroImage} />
             <div className="listItemDetail__info">
                 <div className="listItemDetail__title">
-                    <span>The Marksman</span>
+                    <span>{title ? title : "Untitled"}</span>
                 </div>
                 <div className="listItemDetail__actions">
                     <button className="btn btn--play">
@@ -21,14 +50,11 @@ const ListItemDetail = () => {
                         >
                             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                         </svg>
-                        Play
+                        PLAY
                     </button>
                 </div>
                 <span className="listItemDetail__desc">
-                    Jim is a former Marine who lives a solitary life as a
-                    rancher along the Arizona-Mexican border. But his peaceful
-                    existence soon comes crashing down when he tries to protect
-                    a boy on the run from members of a vicious cartel.
+                    {description ? description : "Description N/A"}
                 </span>
             </div>
         </div>
