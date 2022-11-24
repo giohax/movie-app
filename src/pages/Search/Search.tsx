@@ -12,6 +12,23 @@ const Search = () => {
 
     const movies = useContext(MoviesCtx);
 
+    const getMoviesByTitleOrGenre = () => {
+        if (movies) {
+            return movies
+                .filter(
+                    (movie, index) =>
+                        movie.title.toLowerCase().includes(searchInput) ||
+                        movie.genres
+                            .reduce((acc, cur) => acc + cur, "")
+                            .toLowerCase()
+                            .includes(searchInput)
+                )
+                .map((movie) => <ListItem movie={movie} />);
+        }
+    };
+
+    const getMoviesByTitleAndGenre = () => {};
+
     return (
         <div className="search">
             <input
@@ -19,16 +36,11 @@ const Search = () => {
                 value={searchInput}
                 onChange={handleSearch}
                 className="search__input"
+                placeholder="Search by title or genre"
             />
 
             <div className="search__result">
-                {movies &&
-                    searchInput.length > 0 &&
-                    movies
-                        .filter((movie) =>
-                            movie.title.toLowerCase().includes(searchInput)
-                        )
-                        .map((movie) => <ListItem movie={movie} />)}
+                {movies && searchInput.length > 0 && getMoviesByTitleOrGenre()}
             </div>
         </div>
     );
