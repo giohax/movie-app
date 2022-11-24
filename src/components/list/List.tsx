@@ -9,8 +9,8 @@ type ListProps = {
 };
 
 const List = ({ title, movies }: ListProps) => {
-    const [isMoved, setIsMoved] = useState(false);
-    const [slideNumber, setSlideNumber] = useState(0);
+    const [isMoved, setIsMoved] = useState<boolean>(false);
+    const [slideNumber, setSlideNumber] = useState<number>(0);
 
     const listRef = useRef<HTMLDivElement>(null);
 

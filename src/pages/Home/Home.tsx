@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { MoviesCtx } from "../../context/MoviesContext";
 import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
+import ListItemDetail from "../../components/listItemDetail/ListItemDetail";
 
 const Home = () => {
     const moviesObj = useContext(MoviesCtx);

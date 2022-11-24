@@ -2,11 +2,12 @@ import React, { useState, useContext, useRef } from "react";
 import "./search.scss";
 import ListItem from "../../components/listItem/ListItem";
 import { MoviesCtx } from "../../context/MoviesContext";
+import { Outlet } from "react-router-dom";
 
 const Search = () => {
     const [searchInput, setSearchInput] = useState<string>("");
-    const genreKey = useRef("");
-    const titleKey = useRef("");
+    const genreKey = useRef<string>("");
+    const titleKey = useRef<string>("");
 
     const moviesObj = useContext(MoviesCtx);
 
