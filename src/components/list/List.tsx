@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
-import { Movie } from "../../context/MoviesContext";
+import { Movie, MoviesCtx } from "../../context/MoviesContext";
 
 type ListProps = {
     title: string;

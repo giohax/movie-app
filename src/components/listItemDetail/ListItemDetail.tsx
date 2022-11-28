@@ -25,17 +25,20 @@ const ListItemDetail = () => {
             });
     }, []);
 
-    let heroImage: string;
+    const getHeroImage = () => {
+        let heroImage: string;
 
-    try {
-        heroImage = require(`../../images/hero/${id}.jpeg`);
-    } catch {
-        heroImage = require(`../../images/hero/defaultImage.jpeg`);
-    }
+        try {
+            heroImage = require(`../../images/hero/${id}.jpeg`);
+        } catch {
+            heroImage = require(`../../images/hero/defaultImage.jpeg`);
+        }
+        return heroImage;
+    };
 
     return (
         <div className="listItemDetail">
-            <img src={heroImage} />
+            <img src={getHeroImage()} />
             <div className="listItemDetail__overlay"></div>
             <div className="listItemDetail__info">
                 <div className="listItemDetail__title">
