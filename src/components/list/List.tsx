@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
 import { Movie, MoviesCtx } from "../../context/MoviesContext";
+import throttle from "../../scripts/throttle";
 
 type ListProps = {
     title: string;
@@ -9,29 +10,29 @@ type ListProps = {
 };
 
 const List = ({ title, movies }: ListProps) => {
-    const [isMoved, setIsMoved] = useState<boolean>(false);
-    const [slideNumber, setSlideNumber] = useState<number>(0);
-
     const listRef = useRef<HTMLDivElement>(null);
 
-    const handleClick = (direction: "left" | "right") => {
-        setIsMoved(true);
+    let isMoved = false;
+    let slideNumber = 0;
+
+    const throttledClick = throttle((direction: "left" | "right") => {
+        isMoved = true;
         if (listRef.current) {
             let distance = listRef.current.getBoundingClientRect().x - 50;
             if (direction === "left" && slideNumber > 0) {
-                setSlideNumber(slideNumber - 1);
+                slideNumber--;
                 listRef.current.style.transform = `translateX(${
                     1275 + distance
                 }px)`;
             }
             if (direction === "right" && slideNumber < 5) {
-                setSlideNumber(slideNumber + 1);
+                slideNumber++;
                 listRef.current.style.transform = `translateX(${
                     -1275 + distance
                 }px)`;
             }
         }
-    };
+    }, 1000);
 
     return (
         <div className="list">
@@ -42,7 +43,7 @@ const List = ({ title, movies }: ListProps) => {
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     className="w-5 h-5"
-                    onClick={() => handleClick("left")}
+                    onClick={() => throttledClick("left")}
                 >
                     <path
                         fillRule="evenodd"
@@ -62,7 +63,7 @@ const List = ({ title, movies }: ListProps) => {
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     className="w-5 h-5"
-                    onClick={() => handleClick("right")}
+                    onClick={() => throttledClick("right")}
                 >
                     <path
                         fillRule="evenodd"
