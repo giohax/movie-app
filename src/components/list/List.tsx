@@ -22,13 +22,13 @@ const List = ({ title, movies }: ListProps) => {
             if (direction === "left" && slideNumber > 0) {
                 slideNumber--;
                 listRef.current.style.transform = `translateX(${
-                    1275 + distance
+                    370 + distance
                 }px)`;
             }
             if (direction === "right" && slideNumber < 5) {
                 slideNumber++;
                 listRef.current.style.transform = `translateX(${
-                    -1275 + distance
+                    -370 + distance
                 }px)`;
             }
         }
